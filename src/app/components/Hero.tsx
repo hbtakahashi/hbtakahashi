@@ -1,15 +1,14 @@
 export default function Hero() {
   return (
-    <section className="relative bg-white pb-[110px] pt-[120px] lg:pt-[150px]">
+    <section className="relative bg-[#0D131F] pb-[110px] pt-[120px] lg:pt-[150px]">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center -mx-4">
           <div className="w-full px-4 lg:w-5/12">
             <div className="hero-content">
-              <h1 className="mb-5 text-4xl font-bold !leading-[1.2] text-dark sm:text-[42px] lg:text-[40px] xl:text-[42px]">
-                あなたのアイデアを、<br />
-                最高の形で世界に届ける。
+              <h1 className="mb-5 text-4xl font-bold !leading-[1.2] text-white sm:text-[42px] lg:text-[40px] xl:text-[42px]">
+               遊び心を、デプロイする。
               </h1>
-              <p className="mb-9 max-w-[480px] text-base text-body-color">
+              <p className="mb-9 max-w-120 text-white text-body-color">
                 Next.js、TypeScript、Tailwind CSSを駆使して、高速で美しいWebサイトを構築します。
               </p>
               <ul className="flex flex-wrap items-center gap-4">
