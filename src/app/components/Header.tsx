@@ -3,15 +3,15 @@ import React from "react";
 const Header = () => {
   return (
     <header>
-      <div className="flex justify-between items-center p-4">
-        <p className="font-bold text-2xl">hbtakahashi</p>
+      <div className="flex justify-between items-center py-4 px-8 bg-[#0D131F]">
+        <p className="font-black text-2xl hover:cursor-pointer text-white">hbtakahashi</p>
         <div>
           <nav>
-            <ul className="flex items-center gap-20">
-              <li className="hover:text-green-300 hover:underline">Home</li>
-              <li>Works</li>
-              <li>About</li>
-              <li>Contact</li>
+            <ul className="flex text-lg  items-center text-[#94A3B8] hover:cursor-pointer gap-8">
+              <li className=" hover:text-[#6BDC96] hover:underline underline-offset-8 ">Home</li>
+               <li className="hover:text-[#6BDC96] hover:underline underline-offset-4">About</li>
+              <li className="hover:text-[#6BDC96] hover:underline underline-offset-4">Works</li>
+              <li className="hover:text-[#6BDC96] hover:underline underline-offset-4">Contact</li>
             </ul>
           </nav>
         </div>
