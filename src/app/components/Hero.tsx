@@ -1,45 +1,155 @@
+"use client";
+
+import { useState, useRef } from "react";
+
 export default function Hero() {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const preRef = useRef<HTMLPreElement>(null);
+
+  const handleScroll = () => {
+    if (textareaRef.current && preRef.current) {
+      preRef.current.scrollTop = textareaRef.current.scrollTop;
+      preRef.current.scrollLeft = textareaRef.current.scrollLeft;
+    }
+  };
+
+  const renderHighlightedCSS = (css: string) => {
+    // VSCode風のシンタックスハイライト（コメント、クラス名、プロパティ名）
+    const regex =
+      /(\/\*[\s\S]*?\*\/|\.[a-zA-Z_-][a-zA-Z0-9_-]*|[a-zA-Z0-9-]+(?=\s*:))/g;
+    const parts = css.split(regex);
+
+    return parts.map((part, index) => {
+      if (!part) return null;
+      if (part.startsWith("/*")) {
+        // コメント (VS Code風の緑)
+        return (
+          <span key={index} className="text-[#6A9955]">
+            {part}
+          </span>
+        );
+      }
+      if (part.match(/^\.[a-zA-Z_-]/)) {
+        // クラス名 (ユーザー指定の色)
+        return (
+          <span key={index} className="text-[#D7BA7D]">
+            {part}
+          </span>
+        );
+      }
+      if (part.match(/^[a-zA-Z0-9-]+$/)) {
+        // プロパティ名 (VS Code風の水色)
+        return (
+          <span key={index} className="text-[#9CDCFE]">
+            {part}
+          </span>
+        );
+      }
+      // その他 (記号や値など)
+      return <span key={index}>{part}</span>;
+    });
+  };
+
+  const [customCss, setCustomCss] = useState(`.hero-title {
+    color: #FFF;
+    }
+.hero-subtitle {
+  color: #FFF;
+}
+.hero {
+  background: #0D131F;
+}
+.asobi {
+/*遊び心*/
+  color: #9FCAFF;
+
+}
+.deploy {
+/*デプロイ*/
+  background-image: linear-gradient(150deg, #C1C6D7 0%, #1A202C 100%);
+}`);
+
   return (
-    <section className="relative bg-[#0D131F] pb-[110px] pt-[120px] lg:pt-[150px]">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap items-center -mx-4">
-          <div className="w-full px-4 lg:w-5/12">
-            <div className="hero-content">
-              <h1 className="mb-5 text-4xl font-bold !leading-[1.2] text-white sm:text-[42px] lg:text-[40px] xl:text-[42px]">
-               遊び心を、デプロイする。
-              </h1>
-              <p className="mb-9 max-w-120 text-white text-body-color">
-                Next.js、TypeScript、Tailwind CSSを駆使して、高速で美しいWebサイトを構築します。
-              </p>
-              <ul className="flex flex-wrap items-center gap-4">
-                <li>
-                  <a
-                    href="#"
-                    className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-center text-base font-medium text-white hover:bg-blue-700 lg:px-7"
-                  >
-                    今すぐ始める
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="inline-flex items-center justify-center rounded-md bg-slate-100 px-6 py-3 text-center text-base font-medium text-slate-700 hover:bg-slate-200 lg:px-7"
-                  >
-                    詳しく知る
-                  </a>
-                </li>
-              </ul>
+    <>
+      <style dangerouslySetInnerHTML={{ __html: customCss }} />
+      <section
+        id="hero"
+        className="relative bg-[#0D131F] pb-[110px] pt-[120px] lg:pt-[150px]"
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+            <div className="w-full lg:flex-[3]">
+              <div className="hero-content">
+                <h1
+                  id="main-text"
+                  className="mb-5 text-4xl font-bold leading-[1.2]! text-white sm:text-[42px] lg:text-6xl xl:text-8xl pl-[1em] -indent-[1em]"
+                >
+                  「
+                  <span id="asobi" className="text-[#9FCAFF]">
+                    遊び心
+                  </span>
+                  を、
+                  <span className="bg-[linear-gradient(150deg,#C1C6D7_0%,#1A202C_100%)] bg-clip-text text-transparent">
+                    デプロイ
+                  </span>
+                  する。」
+                </h1>
+                <p
+                  id="sub-text"
+                  className="mb-9 max-w-160 text-white text-body-color text-xl pl-24"
+                >
+                  『おもしろそう』を、動く形へ。自分自身の好奇心をプログラムに変換し、新しい体験を創り出します。
+                </p>
+                <ul className="flex flex-wrap items-center gap-4 pl-24">
+                  <li>
+                    <a
+                      href="#"
+                      className="inline-flex items-center justify-center rounded-md bg-[#006BB5] px-6 py-3 text-center text-base font-medium text-white hover:bg-blue-700 lg:px-7"
+                    >
+                      制作実績を見る
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="inline-flex items-center justify-center rounded-md bg-slate-100 px-6 py-3 text-center text-base font-medium text-slate-700 hover:bg-slate-200 lg:px-7"
+                    >
+                      プロフィール
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          <div className="hidden px-4 lg:block lg:w-7/12">
-            <div className="relative z-10 lg:ml-auto">
-              <div className="w-full h-[400px] bg-blue-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-blue-200">
-                <span className="text-blue-300 font-bold">ここに画像を配置</span>
+            <div className="w-full lg:flex-2 max-w-md h-80 p-6 bg-[#242A36]/60 shadow-2xl border border-[#45474C]/15 rounded-lg rotate-3">
+              <div className="flex items-center px-4 py-2 border-b border-slate-700 bg-[#080E1A]">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#FFB4AB]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#EAB308]"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#6BDC96]"></div>
+                </div>
+              </div>
+              <div className="relative w-full h-64 bg-[#080E1A] overflow-hidden rounded-b-md">
+                <pre
+                  ref={preRef}
+                  className="absolute inset-0 w-full h-full m-0 font-mono text-sm text-white px-4 py-2 whitespace-pre-wrap break-words overflow-hidden pointer-events-none"
+                  aria-hidden="true"
+                >
+                  {renderHighlightedCSS(customCss)}
+                </pre>
+                <textarea
+                  ref={textareaRef}
+                  id="css-editor"
+                  className="absolute inset-0 w-full h-full bg-transparent text-transparent caret-white font-mono text-sm px-4 py-2 focus:outline-none resize-none whitespace-pre-wrap wrap-break-word"
+                  spellCheck={false}
+                  value={customCss}
+                  onChange={(e) => setCustomCss(e.target.value)}
+                  onScroll={handleScroll}
+                />
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
