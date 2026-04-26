@@ -12,13 +12,13 @@ export type Blog = {
     height: number;
     width: number;
   };
-  category:{
+  categorys: {
     id: string;
     createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  name: string;
-  }
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    name: string;
+  }[];
   date: string;
 }

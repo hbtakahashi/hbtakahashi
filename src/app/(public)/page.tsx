@@ -2,6 +2,7 @@ import Hero from "@/src/components/elements/Hero";
 import TechStack from "../../components/elements/TechStack";
 import { client } from "@/src/lib/client";
 import { Blog } from "@/src/types/blog";
+import LatestPosts from "@/src/components/elements/LatestPosts";
 
 export default async function Home() {
   // コンポーネント内でデータを取得するように変更
@@ -12,6 +13,7 @@ export default async function Home() {
     <main>
       <Hero />
       <TechStack />
+      <LatestPosts />
     </main>
   );
 }
