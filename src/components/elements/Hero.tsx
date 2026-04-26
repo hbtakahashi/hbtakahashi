@@ -74,7 +74,7 @@ export default function Hero() {
       <style dangerouslySetInnerHTML={{ __html: customCss }} />
       <section
         id="hero"
-        className="relative bg-[#0D131F] pb-[110px] pt-[120px] lg:pt-[150px]"
+        className="hero relative pb-[110px] pt-[120px] lg:pt-[150px]"
       >
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
@@ -82,21 +82,21 @@ export default function Hero() {
               <div className="hero-content">
                 <h1
                   id="main-text"
-                  className="mb-5 text-4xl font-bold leading-[1.2]! text-white sm:text-[42px] lg:text-6xl xl:text-8xl pl-[1em] -indent-[1em]"
+                  className="hero-title mb-5 text-4xl font-bold leading-[1.2]! sm:text-[42px] lg:text-6xl xl:text-8xl pl-[1em] -indent-[1em]"
                 >
                   「
-                  <span id="asobi" className="text-[#9FCAFF]">
+                  <span id="asobi" className="asobi">
                     遊び心
                   </span>
                   を、
-                  <span className="bg-[linear-gradient(150deg,#C1C6D7_0%,#1A202C_100%)] bg-clip-text text-transparent">
+                  <span className="deploy bg-clip-text text-transparent">
                     デプロイ
                   </span>
                   する。」
                 </h1>
                 <p
                   id="sub-text"
-                  className="mb-9 max-w-160 text-white text-body-color text-xl pl-24"
+                  className="hero-subtitle mb-9 max-w-160 text-body-color text-xl pl-24"
                 >
                   『おもしろそう』を、動く形へ。自分自身の好奇心をプログラムに変換し、新しい体験を創り出します。
                 </p>
