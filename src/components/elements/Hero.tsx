@@ -59,13 +59,13 @@ export default function Hero() {
 .hero {
   background: #0D131F;
 }
-.asobi {
-/*遊び心*/
+.structure {
+/*仕組み*/
   color: #9FCAFF;
 
 }
-.deploy {
-/*デプロイ*/
+.playfulness {
+/*遊び心*/
   background-image: linear-gradient(150deg, #C1C6D7 0%, #1A202C 100%);
 }`);
 
@@ -84,21 +84,18 @@ export default function Hero() {
                   id="main-text"
                   className="hero-title mb-5 text-4xl font-bold leading-[1.2]! sm:text-[42px] lg:text-6xl xl:text-8xl pl-[1em] -indent-[1em]"
                 >
-                  「
-                  <span id="asobi" className="asobi">
+                  「<span className="structure">仕組み</span>
+                  で支え、
+                  <span className="playfulness bg-clip-text text-transparent">
                     遊び心
                   </span>
-                  を、
-                  <span className="deploy bg-clip-text text-transparent">
-                    デプロイ
-                  </span>
-                  する。」
+                  で驚かす。
                 </h1>
                 <p
                   id="sub-text"
                   className="hero-subtitle mb-9 max-w-160 text-body-color text-xl pl-24"
                 >
-                  『おもしろそう』を、動く形へ。自分自身の好奇心をプログラムに変換し、新しい体験を創り出します。
+                  誰かの不便を解消する「仕組み」と、誰かの日常を彩る「遊び心」。自律的な好奇心を原動力に、開発の効率化と最高のユーザー体験を同時に実現します。
                 </p>
                 <ul className="flex flex-wrap items-center gap-4 pl-24">
                   <li>
